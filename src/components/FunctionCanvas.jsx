@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as utils from './FunctionCanvas.Utils';
 
-const FunctionCanvas = ({ funcs, currPos, scale = 5 }) => {
+const FunctionCanvas = ({ funcs, currPos, scale }) => {
   const canvasRef = useRef();
   const [canvasSize, setCanvasSize] = useState(utils.getWindowSize());
 
@@ -29,8 +29,8 @@ const FunctionCanvas = ({ funcs, currPos, scale = 5 }) => {
       context.stroke();
     })
 
-    console.log(currPos);
     if (currPos) {
+      console.log(currPos);
       const shifted = utils.shiftPoint(
         { x: currPos, y: 0 },
         scale,
@@ -38,7 +38,7 @@ const FunctionCanvas = ({ funcs, currPos, scale = 5 }) => {
       );
       context.beginPath();
       context.fillStyle = '#000000';
-      context.arc(shifted.x - 2, shifted.y, 4, 0, 360);
+      context.arc(shifted.x, shifted.y, 3, 0, 360);
       context.fill();
       context.stroke();
     }

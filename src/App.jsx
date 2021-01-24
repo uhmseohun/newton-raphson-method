@@ -7,7 +7,7 @@ import { compile, rationalize } from 'mathjs';
 
 const App = () => {
   const [funcs, setFuncs] = useState([]);
-  const [scale, setScale] = useState(5);
+  const [scale, setScale] = useState(60);
   const [history, setHistory] = useState([]);
   const [currPos, setCurrPos] = useState(null);
 
