@@ -33,13 +33,13 @@ const ControlBox = ({ onButtonClick: handleButtonClick, onScaleChanged }) => {
           />
         </ScaleField>
         <EquationField>
-          <LeadingEquation>y&nbsp;&nbsp;=&nbsp;&nbsp;</LeadingEquation>
           <TextField
             defaultValue={equation}
             placeholder='수식을 입력해 주세요'
             onChange={(e) => setEquation(e.target.value)}
             disabled={clicked}
-          />
+            />
+          <EquationTrailing>&nbsp;&nbsp;=&nbsp;&nbsp;0</EquationTrailing>
         </EquationField>
         <TextField
           type='number'
@@ -84,7 +84,7 @@ export default ControlBox;
 const Container = styled.div`
   width: 350px;
   height: 450px;
-  padding: 10px 8px;
+  padding: 10px 13px;
 
   border: 2px solid #000000;
   border-radius: 10px;
@@ -112,7 +112,7 @@ const Description = styled.p`
 
 const Link = styled.a`
   margin-top: 7px;
-  color: #adb5bd;
+  color: #000000;
   text-decoration: none;
   font-weight: 200;
 `;
@@ -154,7 +154,7 @@ const EquationField = styled.div`
   align-items: center;
 `;
 
-const LeadingEquation = styled.span`
+const EquationTrailing = styled.span`
   font-size: 1.1rem;
 `;
 

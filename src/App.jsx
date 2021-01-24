@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import FunctionCanvas from './components/FunctionCanvas';
 import ControlBox from './components/ControlBox';
+import swal from 'sweetalert';
 import * as utils from './App.Utils';
 import { compile, rationalize } from 'mathjs';
 
@@ -27,6 +28,9 @@ const App = () => {
       await utils.sleep(speed);
       currPos = utils.getNextPosition(equation, derivFunc, currPos);
     }
+
+    const result = currPos;
+    swal('근사해를 찾았어요!', `주어진 방정식 '${equationString} = 0'의 한 해의 근삿값은 '${result}'입니다!`);
   }
 
   return (
