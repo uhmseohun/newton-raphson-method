@@ -20,6 +20,7 @@ const App = () => {
     let currPos = initValue;
 
     for (let i = 0; i < trials; i += 1) {
+      // eslint-disable-next-line
       setHistory((_history) => [..._history, { trial: i, value: currPos }]);
       const slope = derivFunc.evaluate({ x: currPos });
       const fValue = equation.evaluate({ x: currPos });
