@@ -9,7 +9,6 @@ const App = () => {
   const [funcs, setFuncs] = useState([]);
   const [scale, setScale] = useState(60);
   const [history, setHistory] = useState([]);
-  const [currPos, setCurrPos] = useState(null);
 
   const process = async (equationString, speed, trials, initValue = 1) => {
     const equation = compile(equationString);
@@ -17,16 +16,16 @@ const App = () => {
     const { coefficients } = rationalize(equationString, {}, true);
     const derivFunc = utils.getDerivativeFunc(coefficients);
 
-    setCurrPos(initValue);
+    let currPos = initValue;
 
     for (let i = 0; i < trials; i += 1) {
       setHistory((_history) => [..._history, { trial: i, value: currPos }]);
-      setCurrPos(utils.getNextPosition(equation, derivFunc, currPos));
       const slope = derivFunc.evaluate({ x: currPos });
       const fValue = equation.evaluate({ x: currPos });
       const tangent = compile(`${slope}(x - ${currPos}) + ${fValue}`);
       setFuncs([equation, tangent]);
       await utils.sleep(speed);
+      currPos = utils.getNextPosition(equation, derivFunc, currPos);
     }
   }
 
@@ -35,7 +34,6 @@ const App = () => {
       <FunctionCanvas
         funcs={funcs}
         scale={scale}
-        currPos={currPos}
       />
       <ControlBox
         history={history}

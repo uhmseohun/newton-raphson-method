@@ -26,9 +26,10 @@ const ControlBox = ({ onButtonClick: handleButtonClick, onScaleChanged }) => {
           <ScaleText>배율 설정</ScaleText>
           <Slider
             type='range'
-            min={60}
+            min={40}
             max={1000}
             defaultValue={60}
+            step={(1000 - 40) / 8}
             onChange={(e) => onScaleChanged(e.target.value)}
           />
         </ScaleField>
