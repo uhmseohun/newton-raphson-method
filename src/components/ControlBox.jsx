@@ -8,7 +8,7 @@ const absoluteStyle = {
 };
 
 const ControlBox = ({ onButtonClick: handleButtonClick, onScaleChanged }) => {
-  const [equation, setEquation] = useState('x^2');
+  const [equation, setEquation] = useState('(x-3)(x+1)');
   const [trials, setTrials] = useState(null);
   const [speed, setSpeed] = useState(null);
   const [clicked, setClicked] = useState(false);
@@ -27,9 +27,8 @@ const ControlBox = ({ onButtonClick: handleButtonClick, onScaleChanged }) => {
           <Slider
             type='range'
             min={40}
-            max={1000}
+            max={2500}
             defaultValue={60}
-            step={(1000 - 40) / 8}
             onChange={(e) => onScaleChanged(e.target.value)}
           />
         </ScaleField>
