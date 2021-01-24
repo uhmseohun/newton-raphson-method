@@ -2,9 +2,6 @@ import { compile } from 'mathjs';
 
 const enforceSign = (isFirst, value) => {
   let res = `${value > 0 ? '+' : '-'}${value}`;
-  if (value === 1 || value === -1) {
-    res = res.slice(0, -1);
-  }
   if (isFirst && value > 0) {
     res = res.substring(1);
   }
