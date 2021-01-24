@@ -3,10 +3,10 @@ export const getWindowSize = () => ({
   height: window.innerHeight,
 });
 
-export const funcToPoints = (func, { canvas: { width } }) => {
-  const endpoint = width / 2;
+export const funcToPoints = (func, { canvas: { width } }, scale) => {
+  const endpoint = width / 2 / scale;
   const points = [];
-  for (let i = -endpoint; i <= endpoint; i += 0.1) {
+  for (let i = -endpoint; i <= endpoint; i += 0.001) {
     points.push({ x: i, y: func.evaluate({ x: i }) });
   }
   return points;

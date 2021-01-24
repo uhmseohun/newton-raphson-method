@@ -18,7 +18,7 @@ const FunctionCanvas = ({ funcs, currPos, scale }) => {
     utils.drawAxis(context);
 
     funcs.forEach((func) => {
-      const points = utils.funcToPoints(func, context);
+      const points = utils.funcToPoints(func, context, scale);
       context.strokeStyle = '#495057';
       context.beginPath();
       points.forEach((point) => {
@@ -30,7 +30,6 @@ const FunctionCanvas = ({ funcs, currPos, scale }) => {
     })
 
     if (currPos) {
-      console.log(currPos);
       const shifted = utils.shiftPoint(
         { x: currPos, y: 0 },
         scale,
