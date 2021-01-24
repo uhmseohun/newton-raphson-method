@@ -20,7 +20,7 @@ const ControlBox = ({ onButtonClick: handleButtonClick, onScaleChanged }) => {
         <Title>뉴턴-랩슨법 Demo</Title>
         <TextButton onClick={() => setHided(true)}>잠시 숨기기</TextButton>
       </Header>
-      <Description>뉴턴-랩슨법을 사용해 고차방정식의 여러 해 중 한 해를 구해 줍니다.</Description>
+      <Description>뉴턴-랩슨법을 사용해 고차방정식의 여러 해 중 한 해의 근사값을 구해 줍니다.</Description>
       <Link href='https://github.com/uhmseohun/newton-raphson-method'>소스코드 확인하기 →</Link>
         <ScaleField>
           <ScaleText>배율 설정</ScaleText>
