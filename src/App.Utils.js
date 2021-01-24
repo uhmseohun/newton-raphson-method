@@ -2,7 +2,7 @@ import { compile } from 'mathjs';
 
 const enforceSign = (isFirst, value) => {
   let res = `${value > 0 ? '+' : '-'}${value}`;
-  if (value ===1 || value === -1) {
+  if (value === 1 || value === -1) {
     res = res.slice(0, -1);
   }
   if (isFirst && value > 0) {
@@ -18,7 +18,7 @@ export const getDerivativeFunc = (coefficients) => {
     const coefficient = coefficients[i];
     if (!coefficient) continue;
     const newCoefficient = coefficient * i;
-    equation += `${enforceSign(!equation.length, newCoefficient)}*(x^${i - 1}) `;
+    equation += `${enforceSign(!equation.length, newCoefficient)}*(x^${i-1}) `;
   }
   return compile(equation.trimEnd());
 };
