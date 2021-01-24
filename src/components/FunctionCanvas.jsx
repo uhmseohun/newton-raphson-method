@@ -17,11 +17,12 @@ const FunctionCanvas = ({ funcs, scale }) => {
     utils.setBackgroundColor(context, '#F1F3F4');
     utils.drawAxis(context);
 
-    funcs.forEach((func) => {
+    const colors = ['#cc5de8', '#20c997'];
+    funcs.forEach((func, index) => {
       const points = utils.funcToPoints(func, context, scale);
-      context.strokeStyle = '#495057';
       context.beginPath();
       points.forEach((point) => {
+        context.strokeStyle = colors[index % 2];
         point = utils.shiftPoint(point, scale, context);
         context.lineTo(point.x, point.y);
       });
