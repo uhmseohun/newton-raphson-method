@@ -36,7 +36,7 @@ const App = () => {
       swal('실패!', '근을 찾는 도중 근이 수렴하지 않고 발산하는 것 같아요. 초기값을 다시 설정해 보시는 건 어떨까요?');
     } else {
       const result = currPos;
-      swal('근사해를 찾았어요!', `주어진 방정식 '${equationString} = 0'의 한 해의 근삿값은 '${result}'입니다!`);
+      swal('근사해를 찾았어요!', `${trials}번 시행했을 때 주어진 방정식 '${equationString} = 0'의 한 해의 근삿값은 '${result}'입니다!`);
     }  
   }
 

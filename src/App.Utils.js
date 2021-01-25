@@ -25,18 +25,18 @@ export const getNextPosition = (equation, derivFunc, currPos) => (
 );
 
 export const isDiverges = (history) => {
-  history = history.map((h) => h.value).slice(-5);
+  history = history.map((h) => h.value).slice(-15);
   const diffs = history
     .reduce(
       (acc, val, idx) =>
         idx > 0 ? [...acc, Math.abs(val - history[idx - 1])] : [],
       [],
     );
+  const isIncreasing = history[1] - history[0] > 0;
   const result = diffs.filter(
     (val, idx) =>
-      idx > 0 ? val < diffs[idx - 1] : false
+      idx > 0 ? (val - history[idx - 1] > 0) === isIncreasing : false
   ).length > 0;
-
   return result;
 };
 
