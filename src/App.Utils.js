@@ -24,6 +24,22 @@ export const getNextPosition = (equation, derivFunc, currPos) => (
   currPos - equation.evaluate({ x: currPos }) / derivFunc.evaluate({ x: currPos })
 );
 
+export const isDiverges = (history) => {
+  history = history.map((h) => h.value);
+  const diffs = history
+    .reduce(
+      (acc, val, idx) =>
+        idx > 0 ? [...acc, Math.abs(val - history[idx - 1])] : [],
+      [],
+    );
+  const result = diffs.filter(
+    (val, idx) =>
+      idx > 0 ? val < diffs[idx - 1] : false
+  ).length > 0;
+
+  return result;
+};
+
 export const sleep = async (delay) => (
   new Promise((resolve) => setTimeout(resolve, delay * 1000))
 );
