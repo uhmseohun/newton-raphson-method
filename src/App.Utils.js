@@ -25,7 +25,7 @@ export const getNextPosition = (equation, derivFunc, currPos) => (
 );
 
 export const isDiverges = (history) => {
-  history = history.map((h) => h.value);
+  history = history.map((h) => h.value).slice(-5);
   const diffs = history
     .reduce(
       (acc, val, idx) =>
