@@ -10,13 +10,13 @@ const App = () => {
   const [funcs, setFuncs] = useState([]);
   const [scale, setScale] = useState(60);
 
-  const process = async (equationString, speed, trials, initValue = 1) => {
+  const process = async (equationString, speed, trials, initPos = 1) => {
     const equation = compile(equationString);
     setFuncs([equation]);
     const { coefficients } = rationalize(equationString, {}, true);
     const derivFunc = utils.getDerivativeFunc(coefficients);
 
-    let currPos = initValue;
+    let currPos = initPos;
     const history = [];
 
     for (let i = 0; i < trials; i += 1) {
@@ -47,8 +47,8 @@ const App = () => {
         scale={scale}
       />
       <ControlBox
-        onButtonClick={async ({ equationString, speed, trials }) => {
-          await process(equationString, speed, trials);
+        onButtonClick={async ({ equationString, speed, trials, initPos }) => {
+          await process(equationString, speed, trials, initPos);
         }}
         onScaleChanged={(_scale) => setScale(_scale)}
       />

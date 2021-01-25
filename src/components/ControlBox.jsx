@@ -10,6 +10,7 @@ const absoluteStyle = {
 const ControlBox = ({ onButtonClick: handleButtonClick, onScaleChanged }) => {
   const [equation, setEquation] = useState('(x-3)(x+1)');
   const [trials, setTrials] = useState(null);
+  const [initPos, setInitPos] = useState(null);
   const [speed, setSpeed] = useState(null);
   const [clicked, setClicked] = useState(false);
   const [hided, setHided] = useState(false);
@@ -43,6 +44,12 @@ const ControlBox = ({ onButtonClick: handleButtonClick, onScaleChanged }) => {
         </EquationField>
         <TextField
           type='number'
+          placeholder='초기 X 좌표를 지정해 주세요 (기본값 1)'
+          onChange={(e) => setInitPos(e.target.value)}
+          disabled={clicked}
+        />
+        <TextField
+          type='number'
           placeholder='진행 속도를 입력해 주세요 (초 단위)'
           onChange={(e) => setSpeed(e.target.value)}
           disabled={clicked}
@@ -62,6 +69,7 @@ const ControlBox = ({ onButtonClick: handleButtonClick, onScaleChanged }) => {
               equationString: equation,
               speed,
               trials,
+              initPos,
             });
             setClicked(true);
           }}>
