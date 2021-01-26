@@ -11,6 +11,7 @@ const App = () => {
   const [scale, setScale] = useState(60);
 
   const process = async (equationString, speed, trials, initPos = 1) => {
+    console.log(equationString);
     const equation = compile(equationString);
     setFuncs([equation]);
     const { coefficients } = rationalize(equationString, {}, true);

@@ -63,7 +63,7 @@ const ControlBox = ({ onButtonClick: handleButtonClick, onScaleChanged }) => {
         { !clicked ? (
           <Button onClick={() => {
             if (!speed || !trials) {
-              return alert('모든 입력 칸을 채워 주세요');
+              return swal('이런!', '모든 입력칸을 채워 주세요.', 'error');
             }
             handleButtonClick({
               equationString: equation,
